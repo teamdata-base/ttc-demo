@@ -412,6 +412,7 @@
       align-items: center;
       width: 100%;
       height: 100%;
+      cursor: pointer;
       transition: color 120ms ease, background 120ms ease;
     }
 
@@ -624,42 +625,17 @@
       <div class="columns">
         <section class="panel field" aria-labelledby="field-title">
           <h2 class="panel-heading" id="field-title">Lĩnh vực</h2>
-          <ol>
-            <li class="active"><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">1.</span><span>Hệ thống thông tin</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">2.</span><span>Hành chính</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">3.</span><span>Tuyển dụng &amp; Quản lý lao động</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">4.</span><span>Đào tạo</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">5.</span><span>Phát triển nguồn nhân lực</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">6.</span><span>Mua sắm</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">7.</span><span>Chính sách</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">8.</span><span>Pháp chế</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">9.</span><span>Kiểm toán nội bộ</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">10.</span><span>Đầu tư dự án</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">11.</span><span>Quản lý thương hiệu</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">12.</span><span>Tài chính kế toán</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">13.</span><span>Kinh doanh</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">14.</span><span>Trung tâm bảo vệ</span></a></li>
-          </ol>
+          <ol id="field-list"></ol>
         </section>
 
         <section class="panel content" aria-labelledby="content-title">
           <h2 class="panel-heading" id="content-title">Nội dung</h2>
-          <ol>
-            <li class="active"><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">1.</span><span>Hoạch định chiến lược CNTT</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">2.</span><span>Thực thi chiến lược CNTT</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">3.</span><span>Vận hành hệ thống CNTT</span></a></li>
-          </ol>
+          <ol id="content-list"></ol>
         </section>
 
         <section class="panel category" aria-labelledby="category-title">
           <h2 class="panel-heading" id="category-title">Thể loại</h2>
-          <ol>
-            <li class="active"><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">1.</span><span>Chiến lược chuyển đổi số</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">2.</span><span>Chiến lược ứng dụng</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">3.</span><span>Chiến lược dữ liệu</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">4.</span><span>Chiến lược hạ tầng</span></a></li>
-            <li><a href="https://service.base.com.vn/services/8168?view=kanban" target="_blank" rel="noopener noreferrer"><span class="num">5.</span><span>Chiến lược bảo mật</span></a></li>
-          </ol>
+          <ol id="category-list"></ol>
         </section>
       </div>
     </section>
@@ -682,5 +658,348 @@
       </a>
     </footer>
   </main>
+  <script>
+    const workflowLink = "https://service.base.com.vn/services/8168?view=kanban";
+
+    const workflowData = [
+      {
+        field: "Hệ thống thông tin",
+        contents: [
+          {
+            name: "Hoạch định chiến lược CNTT",
+            categories: [
+              "Chiến lược chuyển đổi số",
+              "Chiến lược ứng dụng",
+              "Chiến lược dữ liệu",
+              "Chiến lược hạ tầng",
+              "Chiến lược bảo mật"
+            ]
+          },
+          {
+            name: "Thực thi chiến lược CNTT",
+            categories: [
+              "Triển khai dự án CNTT",
+              "Quản lý thay đổi hệ thống",
+              "Đào tạo người dùng",
+              "Nghiệm thu giải pháp"
+            ]
+          },
+          {
+            name: "Vận hành hệ thống CNTT",
+            categories: [
+              "Quản trị hệ thống",
+              "Hỗ trợ người dùng",
+              "Giám sát vận hành",
+              "Sao lưu & phục hồi"
+            ]
+          }
+        ]
+      },
+      {
+        field: "Hành chính",
+        contents: [
+          {
+            name: "Quản lý văn bản hành chính",
+            categories: ["Văn bản đến", "Văn bản đi", "Lưu trữ hồ sơ", "Ban hành thông báo"]
+          },
+          {
+            name: "Công tác văn phòng",
+            categories: ["Lịch công tác", "Phòng họp", "Tài sản văn phòng", "Dịch vụ hành chính"]
+          },
+          {
+            name: "Hậu cần nội bộ",
+            categories: ["Điều phối xe", "Cấp phát công cụ", "Tiếp khách", "Quản lý con dấu"]
+          }
+        ]
+      },
+      {
+        field: "Tuyển dụng & Quản lý lao động",
+        contents: [
+          {
+            name: "Kế hoạch tuyển dụng",
+            categories: ["Nhu cầu nhân sự", "Phê duyệt định biên", "Đăng tuyển", "Sàng lọc hồ sơ"]
+          },
+          {
+            name: "Tiếp nhận nhân sự",
+            categories: ["Thư mời nhận việc", "Hồ sơ nhân viên", "Hội nhập", "Thử việc"]
+          },
+          {
+            name: "Quản lý quan hệ lao động",
+            categories: ["Hợp đồng lao động", "Điều chuyển", "Kỷ luật", "Chấm dứt hợp đồng"]
+          }
+        ]
+      },
+      {
+        field: "Đào tạo",
+        contents: [
+          {
+            name: "Kế hoạch đào tạo",
+            categories: ["Nhu cầu đào tạo", "Ngân sách đào tạo", "Lịch đào tạo", "Phê duyệt kế hoạch"]
+          },
+          {
+            name: "Tổ chức đào tạo",
+            categories: ["Danh sách học viên", "Tài liệu đào tạo", "Điểm danh", "Đánh giá khóa học"]
+          },
+          {
+            name: "Quản lý chứng nhận",
+            categories: ["Chứng chỉ nội bộ", "Chứng nhận bên ngoài", "Gia hạn chứng nhận", "Hồ sơ đào tạo"]
+          }
+        ]
+      },
+      {
+        field: "Phát triển nguồn nhân lực",
+        contents: [
+          {
+            name: "Đánh giá năng lực",
+            categories: ["Khung năng lực", "Đánh giá định kỳ", "Kết quả đánh giá", "Kế hoạch cải thiện"]
+          },
+          {
+            name: "Lộ trình nghề nghiệp",
+            categories: ["Bản đồ chức danh", "Quy hoạch kế thừa", "Kế hoạch phát triển", "Theo dõi tiến độ"]
+          },
+          {
+            name: "Quản lý hiệu suất",
+            categories: ["Mục tiêu KPI", "Đánh giá hiệu suất", "Phản hồi nhân viên", "Khen thưởng"]
+          }
+        ]
+      },
+      {
+        field: "Mua sắm",
+        contents: [
+          {
+            name: "Đề nghị mua sắm",
+            categories: ["Yêu cầu mua hàng", "Dự toán chi phí", "Phê duyệt nhu cầu", "Theo dõi đề nghị"]
+          },
+          {
+            name: "Lựa chọn nhà cung cấp",
+            categories: ["Báo giá", "Đánh giá nhà cung cấp", "So sánh giá", "Phê duyệt lựa chọn"]
+          },
+          {
+            name: "Quản lý đơn hàng",
+            categories: ["Đơn đặt hàng", "Theo dõi giao hàng", "Nghiệm thu hàng hóa", "Thanh toán"]
+          }
+        ]
+      },
+      {
+        field: "Chính sách",
+        contents: [
+          {
+            name: "Xây dựng chính sách",
+            categories: ["Đề xuất chính sách", "Dự thảo", "Lấy ý kiến", "Phê duyệt ban hành"]
+          },
+          {
+            name: "Truyền thông chính sách",
+            categories: ["Thông báo chính sách", "Hỏi đáp chính sách", "Đào tạo áp dụng", "Xác nhận tiếp nhận"]
+          },
+          {
+            name: "Rà soát chính sách",
+            categories: ["Đánh giá hiệu lực", "Cập nhật chính sách", "Thu hồi chính sách", "Lưu trữ phiên bản"]
+          }
+        ]
+      },
+      {
+        field: "Pháp chế",
+        contents: [
+          {
+            name: "Tư vấn pháp lý",
+            categories: ["Ý kiến pháp lý", "Rà soát hợp đồng", "Tư vấn tuân thủ", "Cảnh báo rủi ro"]
+          },
+          {
+            name: "Quản lý hợp đồng",
+            categories: ["Mẫu hợp đồng", "Đàm phán hợp đồng", "Ký kết", "Theo dõi hiệu lực"]
+          },
+          {
+            name: "Tranh chấp & khiếu nại",
+            categories: ["Tiếp nhận vụ việc", "Hồ sơ tranh chấp", "Phương án xử lý", "Kết quả xử lý"]
+          }
+        ]
+      },
+      {
+        field: "Kiểm toán nội bộ",
+        contents: [
+          {
+            name: "Kế hoạch kiểm toán",
+            categories: ["Phạm vi kiểm toán", "Lịch kiểm toán", "Nhân sự kiểm toán", "Phê duyệt kế hoạch"]
+          },
+          {
+            name: "Thực hiện kiểm toán",
+            categories: ["Thu thập bằng chứng", "Phỏng vấn", "Ghi nhận phát hiện", "Biên bản kiểm toán"]
+          },
+          {
+            name: "Theo dõi khắc phục",
+            categories: ["Khuyến nghị", "Kế hoạch hành động", "Tiến độ khắc phục", "Đóng phát hiện"]
+          }
+        ]
+      },
+      {
+        field: "Đầu tư dự án",
+        contents: [
+          {
+            name: "Đề xuất đầu tư",
+            categories: ["Ý tưởng dự án", "Phân tích khả thi", "Dự toán đầu tư", "Phê duyệt chủ trương"]
+          },
+          {
+            name: "Triển khai dự án",
+            categories: ["Kế hoạch dự án", "Theo dõi tiến độ", "Quản lý chi phí", "Quản lý rủi ro"]
+          },
+          {
+            name: "Nghiệm thu dự án",
+            categories: ["Nghiệm thu giai đoạn", "Bàn giao", "Quyết toán", "Đánh giá sau đầu tư"]
+          }
+        ]
+      },
+      {
+        field: "Quản lý thương hiệu",
+        contents: [
+          {
+            name: "Quản trị nhận diện",
+            categories: ["Logo & guideline", "Ấn phẩm thương hiệu", "Kiểm duyệt thiết kế", "Kho tài sản thương hiệu"]
+          },
+          {
+            name: "Truyền thông thương hiệu",
+            categories: ["Kế hoạch truyền thông", "Nội dung truyền thông", "Kênh truyền thông", "Đo lường hiệu quả"]
+          },
+          {
+            name: "Sự kiện thương hiệu",
+            categories: ["Kế hoạch sự kiện", "Ngân sách sự kiện", "Triển khai", "Báo cáo sự kiện"]
+          }
+        ]
+      },
+      {
+        field: "Tài chính kế toán",
+        contents: [
+          {
+            name: "Quản lý ngân sách",
+            categories: ["Lập ngân sách", "Điều chỉnh ngân sách", "Theo dõi sử dụng", "Báo cáo ngân sách"]
+          },
+          {
+            name: "Thanh toán",
+            categories: ["Đề nghị thanh toán", "Kiểm tra chứng từ", "Phê duyệt thanh toán", "Hạch toán"]
+          },
+          {
+            name: "Báo cáo tài chính",
+            categories: ["Số liệu kế toán", "Đối soát", "Báo cáo định kỳ", "Lưu trữ chứng từ"]
+          }
+        ]
+      },
+      {
+        field: "Kinh doanh",
+        contents: [
+          {
+            name: "Quản lý khách hàng",
+            categories: ["Thông tin khách hàng", "Cơ hội bán hàng", "Lịch sử giao dịch", "Chăm sóc khách hàng"]
+          },
+          {
+            name: "Quản lý hợp đồng kinh doanh",
+            categories: ["Báo giá", "Đề xuất thương mại", "Hợp đồng bán hàng", "Theo dõi thực hiện"]
+          },
+          {
+            name: "Báo cáo kinh doanh",
+            categories: ["Doanh số", "Pipeline", "Hiệu quả bán hàng", "Dự báo kinh doanh"]
+          }
+        ]
+      },
+      {
+        field: "Trung tâm bảo vệ",
+        contents: [
+          {
+            name: "Quản lý ca trực",
+            categories: ["Lịch trực", "Bàn giao ca", "Theo dõi tuần tra", "Biên bản ca trực"]
+          },
+          {
+            name: "Kiểm soát ra vào",
+            categories: ["Khách vào cổng", "Phương tiện", "Thẻ ra vào", "Sổ trực bảo vệ"]
+          },
+          {
+            name: "Xử lý sự cố an ninh",
+            categories: ["Ghi nhận sự cố", "Báo cáo nhanh", "Phương án xử lý", "Kết quả khắc phục"]
+          }
+        ]
+      }
+    ];
+
+    const state = {
+      fieldIndex: 0,
+      contentIndex: 0
+    };
+
+    const fieldList = document.getElementById("field-list");
+    const contentList = document.getElementById("content-list");
+    const categoryList = document.getElementById("category-list");
+
+    function createListItem(label, index, active, options) {
+      const item = document.createElement("li");
+      if (active) {
+        item.className = "active";
+      }
+
+      const link = document.createElement("a");
+      link.href = options.href;
+      if (options.target) {
+        link.target = options.target;
+        link.rel = "noopener noreferrer";
+      }
+      link.addEventListener("click", options.onClick);
+
+      const number = document.createElement("span");
+      number.className = "num";
+      number.textContent = `${index + 1}.`;
+
+      const text = document.createElement("span");
+      text.textContent = label;
+
+      link.append(number, text);
+      item.append(link);
+      return item;
+    }
+
+    function renderFields() {
+      fieldList.replaceChildren(...workflowData.map((entry, index) => {
+        return createListItem(entry.field, index, index === state.fieldIndex, {
+          href: "#noi-dung",
+          onClick: (event) => {
+            event.preventDefault();
+            state.fieldIndex = index;
+            state.contentIndex = 0;
+            renderAll();
+          }
+        });
+      }));
+    }
+
+    function renderContents() {
+      const contents = workflowData[state.fieldIndex].contents;
+      contentList.replaceChildren(...contents.map((entry, index) => {
+        return createListItem(entry.name, index, index === state.contentIndex, {
+          href: "#the-loai",
+          onClick: (event) => {
+            event.preventDefault();
+            state.contentIndex = index;
+            renderContents();
+            renderCategories();
+          }
+        });
+      }));
+    }
+
+    function renderCategories() {
+      const categories = workflowData[state.fieldIndex].contents[state.contentIndex].categories;
+      categoryList.replaceChildren(...categories.map((label, index) => {
+        return createListItem(label, index, index === 0, {
+          href: workflowLink,
+          target: "_blank",
+          onClick: () => {}
+        });
+      }));
+    }
+
+    function renderAll() {
+      renderFields();
+      renderContents();
+      renderCategories();
+    }
+
+    renderAll();
+  </script>
 </body>
 </html>
