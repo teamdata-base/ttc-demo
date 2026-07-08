@@ -678,7 +678,10 @@
           {
             name: "Thực thi chiến lược CNTT",
             categories: [
-              "Triển khai dự án CNTT",
+              {
+                name: "Triển khai dự án CNTT",
+                href: "https://service.base.com.vn/services/28792?view=kanban"
+              },
               "Quản lý thay đổi hệ thống",
               "Đào tạo người dùng",
               "Nghiệm thu giải pháp"
@@ -802,7 +805,15 @@
         contents: [
           {
             name: "Tư vấn pháp lý",
-            categories: ["Ý kiến pháp lý", "Rà soát hợp đồng", "Tư vấn tuân thủ", "Cảnh báo rủi ro"]
+            categories: [
+              {
+                name: "Ý kiến pháp lý",
+                href: "https://service.base.com.vn/services/28796?view=kanban"
+              },
+              "Rà soát hợp đồng",
+              "Tư vấn tuân thủ",
+              "Cảnh báo rủi ro"
+            ]
           },
           {
             name: "Quản lý hợp đồng",
@@ -984,9 +995,12 @@
 
     function renderCategories() {
       const categories = workflowData[state.fieldIndex].contents[state.contentIndex].categories;
-      categoryList.replaceChildren(...categories.map((label, index) => {
+      categoryList.replaceChildren(...categories.map((category, index) => {
+        const label = typeof category === "string" ? category : category.name;
+        const href = typeof category === "string" ? workflowLink : category.href;
+
         return createListItem(label, index, index === 0, {
-          href: workflowLink,
+          href,
           target: "_blank",
           onClick: () => {}
         });
